@@ -1,7 +1,12 @@
-{{#each data}}
+<div id="result">
+    {{#each data}}
     <div class="card">
         <img src="{{images.0.url}}">
-        <h2>{{name}}</h2>
-        <a href="{{href}}">View Albums</a>
+        <div>
+            <h2>{{name}}</h2>
+            <a href="/albums/{{id}}">View Albums</a>
+        </div>
+
     </div>
-{{/each}}
+    {{/each}}
+</div>

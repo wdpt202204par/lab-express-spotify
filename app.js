@@ -5,8 +5,8 @@ const hbs = require('hbs');
 const SpotifyWebApi = require('spotify-web-api-node');
 
 const spotifyApi = new SpotifyWebApi({
-    clientId: process.env.CLIENT_ID,
-    clientSecret: process.env.CLIENT_SECRET
+  clientId: process.env.CLIENT_ID,
+  clientSecret: process.env.CLIENT_SECRET
 });
 
 spotifyApi
@@ -23,25 +23,27 @@ app.use(express.static(__dirname + '/public'));
 // setting the spotify-api goes here:
 
 // Our routes go here:
-app.get("/", (req, res, next)=>{
-    res.render("index",{
-        title: "Home"
-    })
+app.get("/", (req, res, next) => {
+  res.render("index", {
+    title: "Home"
+  })
 })
 
-app.get("/artist-search", (req, res, next)=>{
-    //console.log(req.query.artist)
-    spotifyApi
-  .searchArtists(req.query.artist)
-  .then(data => {
-    console.log('The received data from the API: ', data.body);
-    res.render("search-results", {
+app.get("/artist-search", (req, res, next) => {
+  //console.log(req.query.artist)
+  spotifyApi
+    .searchArtists(req.query.artist)
+    .then(data => {
+      console.log('The received data from the API: ', data.body);
+
+      res.render("search-results", {
         title: `Result for ${req.query.artist}`,
-        data : data.body.artists.items
+        data: data.body.artists.items
+      })
+      console.log('The received data from the API ITEMS: ', data.body.artists.items);
+      // ----> 'HERE WHAT WE WANT TO DO AFTER RECEIVING THE DATA FROM THE API'
     })
-    // ----> 'HERE WHAT WE WANT TO DO AFTER RECEIVING THE DATA FROM THE API'
-  })
-  .catch(err => console.log('The error while searching artists occurred: ', err));
+    .catch(err => console.log('The error while searching artists occurred: ', err));
 })
 
 app.listen(3000, () => console.log('My Spotify project running on port 3000 🎧 🥁 🎸 🔊'));
