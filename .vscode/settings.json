@@ -1,0 +1,8 @@
+{
+  "files.exclude": {
+    "node_modules": "explorerExcludedFiles",
+    ".env": "explorerExcludedFiles",
+    ".DS_Store": "explorerExcludedFiles",
+    "package-lock.json": "explorerExcludedFiles"
+  }
+}
