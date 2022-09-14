@@ -1,0 +1,9 @@
+<ul>
+{{#each data.body.artists.items}}
+ <li>
+    <img src="{{images.0.url}}">
+    <span>{{name}}</span>
+    <a href="/albums/{{id}}">View Artist</a>
+ </li>
+{{/each}}
+</ul>
